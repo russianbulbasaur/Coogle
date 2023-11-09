@@ -7,7 +7,7 @@ struct server{
 
 struct Route{
      char* routeName;
-     char* value;
+     void (*value)(char*);
      struct Route* right;
      struct Route* left;
 };

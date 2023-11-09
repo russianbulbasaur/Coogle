@@ -1,10 +1,10 @@
 #include <string.h>
 
 struct Route* head = NULL;
-void addRoute(char* routeName){
+void addRoute(char* routeName,void (*handler)(char*)){
      struct Route* newRoute = (struct Route*)malloc(sizeof(struct Route));
      newRoute->routeName = routeName;
-     newRoute->value = "2";
+     newRoute->value = handler;
      if(head==NULL){
         head = newRoute;
         printf("Route %s added\n",routeName);
