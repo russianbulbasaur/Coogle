@@ -6,6 +6,9 @@
 
 void main(){
      struct server newServer = initServer(8000);
+     addRoute("/");
+     addRoute("/home");
+     addRoute("/youtube");
      serverListen(newServer);
 }
 
