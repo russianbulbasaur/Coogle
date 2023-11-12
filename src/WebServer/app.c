@@ -20,8 +20,13 @@ void newClientHandler(int clientFD){
 }
 
 
-void main(){
-     struct server newServer = initServer(8000);
+void main(int argc, char *argv[]){
+     if(argc==1){
+        printf("Port number missing\n");
+        return;
+     }
+     int port = atoi(argv[1]);
+     struct server newServer = initServer(port);
      addRoute("/",&handler);
      addRoute("/home",&handler);
      addRoute("/youtube",&handler);
