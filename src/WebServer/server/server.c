@@ -2,7 +2,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "../headers/server.h"
-#include "../utilities/helpers.c"
+#include "../../utilities/helpers.c"
 int getSocketFD(){
      return socket(AF_INET,SOCK_STREAM,0);
 }

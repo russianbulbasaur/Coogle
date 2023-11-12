@@ -7,7 +7,6 @@ void addRoute(char* routeName,void (*handler)(char*)){
      newRoute->value = handler;
      if(head==NULL){
         head = newRoute;
-        printf("Route %s added\n",routeName);
         return;
      }
      struct Route* currentNode = head;
@@ -32,7 +31,6 @@ void addRoute(char* routeName,void (*handler)(char*)){
      }else{
        parent->left = newRoute;
      }
-     printf("Route %s inserted\n",routeName);
      return;
 }
 
