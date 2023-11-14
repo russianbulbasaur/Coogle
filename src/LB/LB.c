@@ -3,9 +3,10 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "../utilities/helpers.c"
-
+#include "LBServer.c"
 struct Server availableServer;
 void assignRequest(){
+    printf("Assign request");
 }
 
 void forkServer(int port){
@@ -36,6 +37,18 @@ void buildLB(int servers){
 }
 
 
-void main(){
-   buildLB(5);
+void main(int argc,char *argv[]){
+   if(argc==1){
+     printf("1 for forking, 2 for initializing the LB");
+     exit(0);
+   }
+   char* code = argv[1];
+   if(atoi(code)==1){
+   buildLB(2);
+   }else{
+   struct server address = initLBServer();
+   serverListen(address,&assignRequest);
+   }
 }
+
+
