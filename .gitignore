@@ -1,2 +1,4 @@
-src/WebServer/app
-src/WebServer/a.out
+bin/*
+**/**/o
+**/**/a.out
+**/**/*.gch
