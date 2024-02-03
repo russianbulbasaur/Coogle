@@ -8,29 +8,30 @@ typedef struct hashmap{
      void* items[CAP];
 } Map;
 
-void put(void*,void*);
-void* get(void*);
+void put(Map*,void*,void*,int);
+void* get(Map*,void*,int);
 
-int hash(void* key){
+int hashFun(void* key,int size){
      int hashed = 0;
-     int *p = key;
-     for(int i=0;i<sizeof(key);i++){
+     unsigned char *p = key;
+     for(int i=0;i<size;i++){
          hashed += *p;
      }
      hashed %= CAP;
      return hashed;
 }
 
-void put(void* key,void* val){
-     printf("%i\n",hash(key));
+void put(Map* hashmap,void* key,void* val,int size){
+     int hash = hashFun(key,size);
+     if(hashmap->items[hash]!=NULL){
+        printf("Filled\n");
+     }else{
+        hashmap->items[hash] = val;
+     }
 }
 
 
-void* get(void* key){
-}
-
-
-int main(){
-    int val = 2;
-    put("ankit",&val);
+void* get(Map* hashmap,void* key,int size){
+     int hash = hashFun(key,size);
+     return hashmap->items[hash];
 }
